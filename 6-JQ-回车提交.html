@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回车提交</title>
+	</head>
+	<body>
+		<input type="text" id="inp" />
+		<input type="submit" value="提交" />
+		<p>
+			<i>0</i>字
+		</p>
+		<ul></ul>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+//			$('input')[0] = function () {
+//				$('i').text($('input').val().length);
+//			}
+
+			var timer = null;
+			$('#inp').focus(function () {
+				timer = setInterval(function () {
+					$('i').text($('input').val().length);
+				},30)
+			})
+			$('#inp').blur(function () {
+				clearInterval(timer);	
+				timer = null;
+			})
+			$('#inp').keyup(function (ev) {
+				if (ev.keyCode == 13) {
+					$('ul').append($('<li>'+$('#inp').val()+'</li>'));
+					clearInterval(timer);
+					timer = null;
+					$('#inp').val('');
+					$('i').text('0');
+				}else{
+					if (!timer) {
+						timer = setInterval(function () {
+							$('i').text($('#inp').val().length);
+						},30)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

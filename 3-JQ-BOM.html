@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width: 200px;
+				height: 200px;
+				background: red;
+				border: 10px solid #000;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+		/*
+		 	BOM
+		 	
+		 	height()/width():同client
+		 	innerWidth()/innerHeight():＋padding，不＋border
+		 	outerWidth()/outerHeight():＋padding，＋border
+		 		（）内可以设置值，设置之后总宽高为固定的值，不包括padding及border
+		 	offset().left/offset().top:当前元素到页面顶部的位置（绝对位置）
+		 	position().left/position().top:当前元素到定位父级的距离（子外边框到定位父级的内边框直接的距离）
+		 	scrollTop()/scrollLeft():滚动距离
+		 		
+		 	对象互转：
+		 		原生 -> JQ ：$(原生对象)
+		 		JQ -> 原生 ：$('textarea').get(下标)
+		 					$('textarea')[下标]
+		 
+		 * */
+		console.log($('#div').height());
+		console.log($('#div').innerHeight());
+		console.log($('#div').outerHeight());
+		</script>
+	</body>
+</html>

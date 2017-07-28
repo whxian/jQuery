@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4
+				<i>i</i>
+			</li>
+		</ul>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+		/*
+		 	DOM
+			 		Document Object Model
+			 		文档对象模型
+			 		赋予我们操作页面的权利，
+			 		
+			上一个：prev();
+			下一个：next();
+			父级：parent();
+			兄弟级：sibling();
+			第一个：first();
+			最后一个：last();
+			closest('范围')：从元素本身开始，逐级向上级元素匹配，并返回最先匹配的元素。
+			find('搜索范围');找到某个元素下的所有子孙元素（某个元素下的所有层）
+			children('');找一层（某个范围下的一层）
+			
+			创建：
+				$('<li>')		//无内容
+				$('<li></li>')	//有内容（可以使用模板字符串）
+			删除：
+				remove();
+			插入：
+				父元素.append(要插入的元素);
+				要插入的元素.appendTo(父元素);【可以链式操作】
+				prepend();
+		 
+		 * */
+		
+//		const ul = $('#ul');
+//		const lis = ul.children;
+//		const first = lis.first();
+//		const last = lis.last();
+//		$('#ul i').text('1234');
+		const ul = $('#ul');
+		ul.find('i')
+		</script>
+	</body>
+</html>

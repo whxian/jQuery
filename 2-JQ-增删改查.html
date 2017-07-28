@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" />
+		<input type="button" value="点击创建" />
+		<ul id="ul">
+			<!--<li>
+				<i>1-</i>
+				<span>这个内容</span>
+				<a href="javascript:;" style="display: none;">
+					确定删除第<i>1条</i>
+				</a>
+			</li>
+			<li></li>-->
+		</ul>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+			let num = 0;
+			$(':button').click(function () {
+				num++;
+				let val = $(':text').val();
+				let li = $(`
+					<li>
+						<i>${num}</i> -
+						<span>${val}</span>
+						<a href="javascript:;" style="display: none;">
+							确定删除第<i>${num}</i>条
+						</a>
+					</li>	
+				`);
+				li.mouseover(function () {
+					$(this).css('background','red');
+					$(this).find('a').show();
+				})
+				li.mouseover(function () {
+					$(this).css('background','');
+					$(this).find('a').hide();
+				})
+				$('ul').append(li);
+				$(':text').val('');
+			})
+			li.find('a').click(function () {
+				num--;
+				$(this).closest('li').remove();
+				let lis = $('li');
+				for (var i=0;i<num.length;i++) {
+					lis.eq(i).find('i').text(i+1);
+				}
+//				$('li').each(function () {
+//					
+//				});
+			})
+			$('ul').append(li);
+			$(':text').val('');
+		</script>
+	</body>
+</html>

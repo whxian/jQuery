@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1
+//			(function (global,factory) {
+//				console.log(global);
+//			})(1) //1
+			
+			//2
+//			(function (global,factory) {
+//				console.log(this);
+//			})(this) //window
+			
+			//3
+//			(function (global,factory) {
+//				"use strict"
+//				console.log(this);
+//			})(this) //undefined
+//			
+			//4:高逼格
+			(function (global,factory) {
+				"use strict"
+				console.log(this);	//undefined
+				factory(global);
+			})(typeof window !== 'undefined'?window:this,function (global,noGlobal) {
+				console.log(noGlobal);	//undefined
+				var version = '2017.7.27';
+				
+				jQuery = function (selector) {
+					//直接在jQuery的构造函数中new自己，那么就递归报错了
+					//new jQuery(selector);
+						//解决：(无new化操作)
+						//		只要不new自己就不会出现递归，找个炮灰(要有jQuery所有的特性，但是名字不同)来代替自己
+						jQuery.fn = jQuery.prototype = {
+							constructor : jQuery,
+							css:function () {
+								alert('1');
+							},
+							paohui:function () {
+								document.querySelector(selector);
+							}
+						}
+						jQuery.prototype.paohui = jQuery.prototype;
+					
+					return document.querySelector(selector);
+				}
+				var paohui = function(selector){
+				 	document.querySelector(selector);
+				}
+				paohui.prototype = jQuery.fn;
+				paohui.constructor = paohui;
+				//把函数挂在Window上，全局就能访问了
+//				window.$ = window.jQuery = jQuery;
+			})
+			console.log(jQuery)
+			
+			//$为别的框架
+			var j = jQuery();
+			console.log(j);
+			
+			//5
+			
+		/*
+			//在低版本下，undefined会被修改
+			//so,通过函数未传参就为undefined的特性
+			var undefined = 10;
+			console.log(undefined); //低版本：10
+		*/
+		</script>
+	</body>
+</html>

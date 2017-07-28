@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 200px;
+				height: 200px;
+				background: red;
+				position: absolute;
+				left: 10px;
+				top: 150px;
+			}
+			#box2{
+				width: 100px;
+				height: 100px;
+				background: green;
+				position: absolute;
+				left: 10px;
+				top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box2"></div>
+		<script>
+			$('#box').on('click.a',function () {
+				alert(1);
+			})
+			$('#box').on('click',function () {
+				alert(2);
+			})
+//			$('#box2').click('click',function () {
+//				alert(1);
+//			})
+		</script>
+	</body>
+</html>

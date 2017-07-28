@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: green;
+				position: absolute;
+				left: 10px;
+				top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		111111111111111111111111111
+		<div id="box"></div>
+		<script src="../../jquery-3.2.1.min.js"></script>
+		<script>
+			
+			/*
+			 JQ中的ev为二次封装对象
+			 
+			 常用的事件细节信息都会封装到这个ev中
+			 不过如果二次封装的ev中没有想要获取的信息
+			 	通过ev.originalEvent去获取原生的信息
+			 
+			 * */
+			
+			var disX,disY = 0;
+			$('#box').mousedown(function (ev) {
+				console.log(ev);		//JQ对象
+				console.log(ev.originalEvent);	//原生对象
+				
+				disX = ev.clientX - $(this).position().left;
+				disY = ev.clientY - $(this).position().top;
+				
+				$('#box').css({
+					left:ev.clientX - disX,
+					top:ev.clientY - disY
+				});
+			});
+			$(document).mouseup(function () {
+				$(document).off()
+			})
+		</script>
+	</body>
+</html>
